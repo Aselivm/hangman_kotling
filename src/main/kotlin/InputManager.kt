@@ -38,7 +38,7 @@ class InputManager {
         }
 
         private fun isRussianLetter(char: Char): Boolean {
-            return char in 'А'..'я'
+            return char in 'А'..'я' || char == 'Ё' || char == 'ё'
         }
     }
 }
