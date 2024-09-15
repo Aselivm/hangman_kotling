@@ -26,6 +26,6 @@ class DictionaryRepository {
             Difficulty.MEDIUM -> dictionary.filter { it.length in 4..5 }
             Difficulty.HARD -> dictionary.filter { it.length > 5 }
         }
-        return filteredWords.randomOrNull() ?: "No word found"
+        return filteredWords.randomOrNull() ?: "No word found" //todo выбрасывать исключение
     }
 }
