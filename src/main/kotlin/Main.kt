@@ -1,23 +1,24 @@
-import game.Difficulty
 import game.Game
 import game.GameBuilder
 import renderer.Renderer
 
 fun main() {
+    startGameLoop()
+}
+
+fun startGameLoop() {
     do {
         Renderer.displayWelcomeMessage()
-        startGame()
+        val difficulty = InputManager.chooseDifficulty()
+        Renderer.displayCurrentDifficulty(difficulty)
+        play(GameBuilder.createGame(difficulty))
     } while (InputManager.playAgain())
     Renderer.displayThankYouMessage()
 }
 
-fun startGame() {
-    val difficulty = InputManager.chooseDifficulty()
-    val currentGame = GameBuilder.createGame(difficulty)
-
+fun play(currentGame: Game) {
     while (!currentGame.isGameOver()) {
         Renderer.displayHangmanDrawing(currentGame.attemptsLeft)
-        Renderer.displayCurrentDifficulty(difficulty)
 
         val letter = InputManager.chooseLetter()
         if (currentGame.guess(letter)) {
