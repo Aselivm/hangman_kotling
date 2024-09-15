@@ -6,15 +6,15 @@ import renderer.Renderer
 fun main() {
     do {
         Renderer.displayWelcomeMessage()
-        val difficulty = InputManager.chooseDifficulty()
-        val currentGame = GameBuilder.createGame(difficulty)
-
-        startGame(currentGame, difficulty)
+        startGame()
     } while (InputManager.playAgain())
     Renderer.displayThankYouMessage()
 }
 
-fun startGame(currentGame: Game, difficulty: Difficulty) {
+fun startGame() {
+    val difficulty = InputManager.chooseDifficulty()
+    val currentGame = GameBuilder.createGame(difficulty)
+
     while (!currentGame.isGameOver()) {
         Renderer.displayHangmanDrawing(currentGame.attemptsLeft)
         Renderer.displayCurrentDifficulty(difficulty)
