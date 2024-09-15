@@ -6,7 +6,7 @@ class InputManager {
         fun chooseDifficulty(): Difficulty {
             Renderer.displayDifficultyOptions()
             while (true) {
-                val difficulty = when (readlnOrNull()) {
+                val difficulty = when (readlnOrNull()?.trim()) {
                     "1" -> Difficulty.EASY
                     "2" -> Difficulty.MEDIUM
                     "3" -> Difficulty.HARD
@@ -23,7 +23,7 @@ class InputManager {
         fun chooseLetter(): Char {
             Renderer.displayLetterPrompt()
             while (true) {
-                val input = readlnOrNull()
+                val input = readlnOrNull()?.trim()
                 if (input != null && input.length == 1 && isRussianLetter(input[0])) {
                     return input[0]
                 } else {
