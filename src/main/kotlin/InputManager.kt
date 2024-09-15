@@ -33,7 +33,7 @@ class InputManager {
         }
 
         fun playAgain(): Boolean {
-            Renderer.displayPlayAgainPrompt()
+            Renderer.displayPlayAgainPrompt() //todo сделать бесконечный цикл пока не введен валидный инпут
             return readlnOrNull()?.trim()?.lowercase() == "да"
         }
 
