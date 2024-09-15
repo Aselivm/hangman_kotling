@@ -4,17 +4,14 @@ import game.GameBuilder
 import renderer.Renderer
 
 fun main() {
-    while (true) {
+    do {
         Renderer.displayWelcomeMessage()
         val difficulty = InputManager.chooseDifficulty()
         val currentGame = GameBuilder.createGame(difficulty)
 
         startGame(currentGame, difficulty)
-        if (!InputManager.playAgain()) {
-            Renderer.displayThankYouMessage()
-            break
-        }
-    }
+    } while (InputManager.playAgain())
+    Renderer.displayThankYouMessage()
 }
 
 fun startGame(currentGame: Game, difficulty: Difficulty) {
