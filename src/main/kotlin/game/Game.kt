@@ -2,11 +2,17 @@ package game
 
 class Game(
     val word: String,
-    var attempts: Int
+    var remainingAttempts: Int,
+    val difficulty: Difficulty
 ) {
 
-    var maskedWordArray: CharArray = hideWord(word)
-    var guessedLettersArray: MutableList<Char> = mutableListOf()
+    var maskedWordArray: CharArray
+    var guessedLettersArray: MutableList<Char>
+
+    init {
+        maskedWordArray = hideWord(word)
+        guessedLettersArray = mutableListOf()
+    }
 
     fun guess(letter: Char): Boolean {
         if (!guessedLettersArray.contains(letter.lowercaseChar())) {
@@ -23,14 +29,14 @@ class Game(
         }
 
         if (!isLetterFound) {
-            attempts--
+            remainingAttempts--
         }
 
         return isLetterFound
     }
 
     fun isGameOver(): Boolean {
-        return attempts <= 0 || maskedWordArray.joinToString("") == word
+        return remainingAttempts <= 0 || maskedWordArray.joinToString("") == word
     }
 
     fun isWin(): Boolean {

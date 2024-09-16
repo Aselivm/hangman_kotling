@@ -10,6 +10,6 @@ object GameBuilder {
 
     fun createGame(difficulty: Difficulty): Game {
         val word = dictionaryRepository.getWordByDifficulty(difficulty)
-        return Game(word, ATTEMPTS_IN_TOTAL)
+        return Game(word, ATTEMPTS_IN_TOTAL, difficulty)
     }
 }
