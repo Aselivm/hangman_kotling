@@ -1,3 +1,5 @@
+package repository
+
 import game.Difficulty
 import java.io.InputStream
 import java.lang.RuntimeException

@@ -1,21 +1,12 @@
 package game
 
-class Game(private val word: String, private var attempts: Int) {
+class Game(
+    val word: String,
+    var attempts: Int
+) {
 
-    private var maskedWordArray: CharArray = word.map { '_' }.toCharArray()
-    private var guessedLettersArray: MutableList<Char> = mutableListOf()
-
-    val currentWord: String
-        get() = word //todo no getters in kotlin
-
-    val maskedWord: String
-        get() = maskedWordArray.joinToString("")
-
-    val attemptsLeft: Int
-        get() = attempts
-
-    val guessedLetters: String
-        get() = guessedLettersArray.joinToString(", ") //todo: never used
+    var maskedWordArray: CharArray = hideWord(word)
+    var guessedLettersArray: MutableList<Char> = mutableListOf()
 
     fun guess(letter: Char): Boolean {
         if (!guessedLettersArray.contains(letter.lowercaseChar())) {
@@ -40,5 +31,13 @@ class Game(private val word: String, private var attempts: Int) {
 
     fun isGameOver(): Boolean {
         return attempts <= 0 || maskedWordArray.joinToString("") == word
+    }
+
+    fun isWin(): Boolean {
+        return maskedWordArray.joinToString("") == word
+    }
+
+    private fun hideWord(word: String) : CharArray {
+        return word.map { '_' }.toCharArray()
     }
 }
