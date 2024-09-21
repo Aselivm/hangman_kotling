@@ -11,6 +11,11 @@ class Game(val word: String, var remainingAttempts: Int, val difficulty: Difficu
     val guessedLetters: String
         get() = guessedLettersArray.joinToString("")
 
+    init {
+        maskedWordArray = hideWord(word)
+        guessedLettersArray = mutableListOf()
+    }
+
     fun guess(letter: Char): Boolean {
         if (!guessedLettersArray.contains(letter.lowercaseChar())) {
             guessedLettersArray.add(letter.lowercaseChar())
@@ -42,10 +47,5 @@ class Game(val word: String, var remainingAttempts: Int, val difficulty: Difficu
 
     private fun hideWord(word: String) : CharArray {
         return word.map { '_' }.toCharArray()
-    }
-
-    init {
-        maskedWordArray = hideWord(word)
-        guessedLettersArray = mutableListOf()
     }
 }

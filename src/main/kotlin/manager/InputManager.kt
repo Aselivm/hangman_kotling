@@ -36,7 +36,7 @@ object InputManager {
 
     fun playAgain(): Boolean {
         while (true) {
-            Display.showPlayAgainPrompt() // Выводим сообщение с вопросом "Хотите сыграть снова?"
+            Display.showPlayAgainPrompt()
 
             when (readlnOrNull()?.trim()?.lowercase()) {
                 "да" -> return true
@@ -51,5 +51,4 @@ object InputManager {
     private fun isRussianLetter(char: Char): Boolean {
         return char in 'А'..'я' || char == 'Ё' || char == 'ё'
     }
-
 }
