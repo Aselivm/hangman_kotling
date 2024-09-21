@@ -17,8 +17,9 @@ class GameProcess {
 
         while (!currentGame.isGameOver()) {
             Display.showHangmanDrawing(currentGame.remainingAttempts)
-            processTurn(currentGame)
             Display.showMaskedWord(currentGame.maskedWord)
+            Display.showGuessedLetters(currentGame.guessedLetters)
+            processTurn(currentGame)
         }
 
         Display.showGameOver(currentGame.isWin(), currentGame.word)
@@ -32,7 +33,5 @@ class GameProcess {
         } else {
             Display.showIncorrectGuess(letter)
         }
-
-        Display.showGuessedLetters(currentGame.guessedLetters)
     }
 }

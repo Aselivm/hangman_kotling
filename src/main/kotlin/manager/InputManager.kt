@@ -8,7 +8,7 @@ object InputManager {
     fun chooseDifficulty(): Difficulty {
         Display.showDifficultyOptions()
         while (true) {
-            val difficulty = when (readlnOrNull()?.trim()) {
+            val difficulty = when (readlnOrNull()?.trim()?.lowercase()) {
                 "1" -> Difficulty.EASY
                 "2" -> Difficulty.MEDIUM
                 "3" -> Difficulty.HARD
@@ -25,7 +25,7 @@ object InputManager {
     fun chooseLetter(): Char {
         Display.showLetterPrompt()
         while (true) {
-            val input = readlnOrNull()?.trim()
+            val input = readlnOrNull()?.trim()?.lowercase()
             if (input != null && input.length == 1 && isRussianLetter(input[0])) {
                 return input[0]
             } else {
@@ -35,8 +35,17 @@ object InputManager {
     }
 
     fun playAgain(): Boolean {
-        Display.showPlayAgainPrompt() //todo сделать бесконечный цикл пока не введен валидный инпут
-        return readlnOrNull()?.trim()?.lowercase() == "да"
+        while (true) {
+            Display.showPlayAgainPrompt() // Выводим сообщение с вопросом "Хотите сыграть снова?"
+
+            when (readlnOrNull()?.trim()?.lowercase()) {
+                "да" -> return true
+                "нет" -> return false
+                else -> {
+                    println("Пожалуйста, введите 'да' или 'нет'.")
+                }
+            }
+        }
     }
 
     private fun isRussianLetter(char: Char): Boolean {

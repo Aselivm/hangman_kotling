@@ -6,7 +6,7 @@ import java.lang.RuntimeException
 
 class DictionaryRepository {
     companion object {
-        private const val FILE_NAME = "words.txt"
+        private const val FILE_NAME = "/words.txt"
         private val dictionary = setDictionaryFromFile(FILE_NAME)
 
         private fun setDictionaryFromFile(fileName: String): List<String> {
