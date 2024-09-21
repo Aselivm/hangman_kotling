@@ -1,18 +1,15 @@
 package game
 
-class Game(
-    val word: String,
-    var remainingAttempts: Int,
-    val difficulty: Difficulty
-) {
+class Game(val word: String, var remainingAttempts: Int, val difficulty: Difficulty) {
 
-    var maskedWordArray: CharArray
-    var guessedLettersArray: MutableList<Char>
+    private var maskedWordArray: CharArray
+    private var guessedLettersArray: MutableList<Char>
 
-    init {
-        maskedWordArray = hideWord(word)
-        guessedLettersArray = mutableListOf()
-    }
+    val maskedWord: String
+        get() = maskedWordArray.joinToString("")
+
+    val guessedLetters: String
+        get() = guessedLettersArray.joinToString("")
 
     fun guess(letter: Char): Boolean {
         if (!guessedLettersArray.contains(letter.lowercaseChar())) {
@@ -45,5 +42,10 @@ class Game(
 
     private fun hideWord(word: String) : CharArray {
         return word.map { '_' }.toCharArray()
+    }
+
+    init {
+        maskedWordArray = hideWord(word)
+        guessedLettersArray = mutableListOf()
     }
 }

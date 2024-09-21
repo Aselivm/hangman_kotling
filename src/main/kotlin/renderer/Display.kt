@@ -44,8 +44,8 @@ object Display {
         println(message)
     }
 
-    fun showMaskedWord(maskedWordArray: CharArray) {
-        println("Загаданное слово: $maskedWordArray")
+    fun showMaskedWord(maskedWord: String) {
+        println("Загаданное слово: $maskedWord")
     }
 
     fun showPlayAgainPrompt() {
@@ -56,8 +56,8 @@ object Display {
         println("Спасибо за игру!")
     }
 
-    fun showGuessedLetters(guessedLetters: Collection<Char>) {
-        println("Guessed letters: ${guessedLetters.joinToString(", ")}")
+    fun showGuessedLetters(guessedLetters: String) {
+        println("Guessed letters: $guessedLetters")
     }
 
     fun showHangmanDrawing(attemptsLeft: Int) {
