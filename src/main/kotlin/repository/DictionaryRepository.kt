@@ -11,9 +11,10 @@ class DictionaryRepository {
 
         private fun setDictionaryFromFile(fileName: String): List<String> {
             val listOfWords = mutableListOf<String>()
-            val inputStream: InputStream? = object {}.javaClass.getResourceAsStream(fileName)
+            val inputStream: InputStream = object {}.javaClass.getResourceAsStream(fileName)
+                ?: throw RuntimeException("Файл $fileName не найден")
 
-            inputStream?.bufferedReader()?.useLines { lines ->
+            inputStream.bufferedReader().useLines { lines ->
                 lines.forEach { listOfWords.add(it) }
             }
 
@@ -28,6 +29,6 @@ class DictionaryRepository {
             Difficulty.MEDIUM -> dictionary.filter { it.length in 4..5 }
             Difficulty.HARD -> dictionary.filter { it.length > 5 }
         }
-        return filteredWords.randomOrNull() ?: "No word found" //todo выбрасывать исключение
+        return filteredWords.randomOrNull() ?: throw RuntimeException("Ошибка в инициализации слова")
     }
 }
