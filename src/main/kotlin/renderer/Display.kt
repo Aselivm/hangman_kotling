@@ -2,40 +2,40 @@ package renderer
 
 import game.Difficulty
 
-object Renderer {
-    fun displayWelcomeMessage() {
+object Display {
+    fun showWelcomeMessage() {
         println("Добро пожаловать в игру Хенгман!")
     }
 
-    fun displayDifficultyOptions() {
+    fun showDifficultyOptions() {
         println("Выберите сложность (1 - Легкий, 2 - Средний, 3 - Сложный):")
     }
 
-    fun displayCurrentDifficulty(difficulty: Difficulty) {
+    fun showCurrentDifficulty(difficulty: Difficulty) {
         println("Текущий уровень сложности: $difficulty")
     }
 
-    fun displayInvalidDifficultyChosen() {
+    fun showInvalidDifficultyChosen() {
         println("Некорректный ввод. Пожалуйста, выберите 1, 2 или 3.")
     }
 
-    fun displayLetterPrompt() {
+    fun showLetterPrompt() {
         println("Введите букву:")
     }
 
-    fun displayInvalidLetterInput() {
+    fun showInvalidLetterInput() {
         println("Ошибка ввода. Пожалуйста, введите корректную русскую букву.")
     }
 
-    fun displayCorrectGuess(letter: Char) {
+    fun showCorrectGuess(letter: Char) {
         println("Правильный ввод: буква '$letter' присутствует в слове!")
     }
 
-    fun displayIncorrectGuess(letter: Char) {
+    fun showIncorrectGuess(letter: Char) {
         println("Неправильный ввод: буква '$letter' отсутствует в слове.")
     }
 
-    fun displayGameOver(isWin: Boolean, word: String) {
+    fun showGameOver(isWin: Boolean, word: String) {
         val message = if (isWin) {
             "Поздравляем! Вы угадали слово: $word"
         } else {
@@ -44,23 +44,23 @@ object Renderer {
         println(message)
     }
 
-    fun displayMaskedWord(maskedWordArray: CharArray) {
+    fun showMaskedWord(maskedWordArray: CharArray) {
         println("Загаданное слово: $maskedWordArray")
     }
 
-    fun displayPlayAgainPrompt() {
+    fun showPlayAgainPrompt() {
         println("Хотите сыграть снова? (да/нет)")
     }
 
-    fun displayThankYouMessage() {
+    fun showThankYouMessage() {
         println("Спасибо за игру!")
     }
 
-    fun displayGuessedLetters(guessedLetters: Collection<Char>) {
+    fun showGuessedLetters(guessedLetters: Collection<Char>) {
         println("Guessed letters: ${guessedLetters.joinToString(", ")}")
     }
 
-    fun displayHangmanDrawing(attemptsLeft: Int) {
+    fun showHangmanDrawing(attemptsLeft: Int) {
         val hangman = when (attemptsLeft) {
             6 -> HangmanDrawings.HANGMAN_STAGE_6
             5 -> HangmanDrawings.HANGMAN_STAGE_5
